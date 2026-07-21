@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink text-slate-200 antialiased;
+  background-image: radial-gradient(
+      circle at 15% 10%,
+      rgba(139, 92, 246, 0.18),
+      transparent 40%
+    ),
+    radial-gradient(circle at 85% 0%, rgba(168, 85, 247, 0.14), transparent 45%),
+    radial-gradient(circle at 50% 120%, rgba(124, 58, 237, 0.15), transparent 50%);
+  background-attachment: fixed;
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-violet-400 via-fuchsia-400 to-purple-500 bg-clip-text text-transparent;
+  }
+
+  .card {
+    @apply rounded-2xl border border-violet-500/15 bg-panel/70 p-6 backdrop-blur-sm transition
+      duration-300 hover:border-violet-500/40 hover:shadow-glow;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r
+      from-violet-600 to-fuchsia-600 px-6 py-3 text-sm font-semibold text-white
+      shadow-glow transition hover:brightness-110 active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-violet-500/30
+      px-6 py-3 text-sm font-semibold text-violet-200 transition hover:bg-violet-500/10;
+  }
+
+  .section-label {
+    @apply mb-3 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-violet-300;
+  }
+
+  .stat-num {
+    @apply gradient-text text-3xl font-extrabold sm:text-4xl;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #05020c;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#7c3aed, #a855f7);
+  border-radius: 9999px;
+}
