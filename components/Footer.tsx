@@ -11,7 +11,7 @@ export function Footer() {
             <p className="mt-4 text-sm leading-relaxed text-slate-400">
               {site.tagline}. We help brands and Web3 projects launch, grow, and dominate their markets.
             </p>
-            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 sm:tracking-[0.3em]">
               Scale Faster. <span className="text-violet-400">Grow Smarter.</span>
             </p>
           </div>
@@ -33,7 +33,7 @@ export function Footer() {
 
           <div className="text-sm">
             <p className="font-semibold text-white">Get in touch</p>
-            <a href={`mailto:${site.email}`} className="mt-2 block text-slate-400 hover:text-violet-300">
+            <a href={`mailto:${site.email}`} className="mt-2 block break-all text-slate-400 hover:text-violet-300">
               {site.email}
             </a>
             <a href={site.telegramUrl} target="_blank" rel="noopener noreferrer" className="block text-slate-400 hover:text-violet-300">

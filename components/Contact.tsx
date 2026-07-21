@@ -92,7 +92,7 @@ export function Contact() {
                       href={c.href}
                       target={c.href.startsWith("http") ? "_blank" : undefined}
                       rel="noopener noreferrer"
-                      className="text-sm text-slate-200 transition hover:text-violet-300"
+                      className="break-all text-sm text-slate-200 transition hover:text-violet-300"
                     >
                       {c.value}
                     </a>

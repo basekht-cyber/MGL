@@ -31,20 +31,24 @@ export function Fundraising() {
         </div>
 
         {/* process steps */}
-        <div className="mt-8 rounded-2xl border border-violet-500/15 bg-panel/50 p-6">
-          <p className="mb-5 text-center text-sm font-semibold uppercase tracking-[0.25em] text-violet-300">
+        <div className="mt-8 rounded-2xl border border-violet-500/15 bg-panel/50 p-5 sm:p-6">
+          <p className="mb-5 text-center text-xs font-semibold uppercase tracking-[0.15em] text-violet-300 sm:text-sm sm:tracking-[0.25em]">
             Our Fundraising Process
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             {steps.map((step, i) => (
-              <div key={step} className="flex items-center gap-3">
-                <div className="flex items-center gap-2 rounded-full border border-violet-500/25 px-4 py-2 text-sm text-slate-300">
+              <div key={step} className="flex items-center gap-2 sm:gap-3">
+                <div className="flex items-center gap-2 rounded-full border border-violet-500/25 px-3 py-1.5 text-xs text-slate-300 sm:px-4 sm:py-2 sm:text-sm">
                   <span className="text-xs font-bold text-violet-300">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {step}
                 </div>
-                {i < steps.length - 1 && <span className="text-violet-500/50">→</span>}
+                {i < steps.length - 1 && (
+                  <span aria-hidden="true" className="hidden text-violet-500/50 sm:inline">
+                    →
+                  </span>
+                )}
               </div>
             ))}
           </div>

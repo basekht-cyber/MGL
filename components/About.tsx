@@ -9,12 +9,12 @@ export function About() {
 
         <div className="mt-10 grid gap-12 lg:grid-cols-2">
           <div>
-            <p className="text-lg leading-relaxed text-slate-300">
+            <p className="text-base leading-relaxed text-slate-300 sm:text-lg">
               Meta Growth Labs is a performance-driven marketing agency specializing in
               Performance Marketing, Web3 Growth, and Fundraising for innovative brands and
               blockchain projects.
             </p>
-            <p className="mt-5 text-lg leading-relaxed text-slate-400">
+            <p className="mt-5 text-base leading-relaxed text-slate-400 sm:text-lg">
               We combine data, creativity, and cutting-edge strategies to help brands acquire
               users, build communities, and raise capital successfully.
             </p>

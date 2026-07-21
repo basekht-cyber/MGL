@@ -44,7 +44,7 @@ export function Navbar() {
         </a>
 
         <button
-          className="lg:hidden"
+          className="-mr-2 p-2 text-slate-200 lg:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -60,7 +60,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-violet-500/10 bg-ink/95 backdrop-blur-md lg:hidden">
+        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-violet-500/10 bg-ink/95 backdrop-blur-md lg:hidden">
           <ul className="container-x flex flex-col gap-1 py-4">
             {nav.map((item) => (
               <li key={item.href}>

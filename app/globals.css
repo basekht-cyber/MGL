@@ -8,6 +8,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* offset for the fixed navbar when jumping to #sections */
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -20,6 +23,37 @@ body {
     radial-gradient(circle at 85% 0%, rgba(168, 85, 247, 0.14), transparent 45%),
     radial-gradient(circle at 50% 120%, rgba(124, 58, 237, 0.15), transparent 50%);
   background-attachment: fixed;
+  /* decorative glows must never create a sideways scrollbar on small screens */
+  overflow-x: hidden;
+}
+
+/* `background-attachment: fixed` is expensive/janky on mobile GPUs */
+@media (max-width: 767px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+/* iOS Safari zooms the page when focusing a field under 16px */
+@media (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @layer components {
@@ -48,7 +82,8 @@ body {
   }
 
   .section-label {
-    @apply mb-3 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-violet-300;
+    @apply mb-3 inline-block text-xs font-semibold uppercase tracking-[0.18em] text-violet-300
+      sm:tracking-[0.3em];
   }
 
   .stat-num {

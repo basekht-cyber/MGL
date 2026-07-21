@@ -8,7 +8,7 @@ export const site = {
   description:
     "Meta Growth Labs is a performance-driven marketing agency specializing in Performance Marketing, Web3 Growth, and Fundraising for innovative brands and blockchain projects.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.metagrowthlabs.com",
-  email: "faisalkht@gmail.com",
+  email: "labsmetagrowth@gmail.com",
   telegram: "@metagrowthlabs",
   telegramUrl: "https://t.me/metagrowthlabs",
   linkedin: "https://linkedin.com/in/usamasaleem07",
