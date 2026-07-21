@@ -12,7 +12,7 @@ const steps = [
 
 export function Fundraising() {
   return (
-    <section id="fundraising" className="py-20 sm:py-28">
+    <section id="fundraising" className="section-y">
       <div className="container-x">
         <SectionHeading
           label="Our Fundraising Solutions"
@@ -21,9 +21,9 @@ export function Fundraising() {
           sub="We don't just raise funds. We build investor confidence — from strategic planning to closing, helping Web3 projects secure the capital they need."
         />
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 carousel sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
           {fundraisingServices.map((s) => (
-            <div key={s.name} className="card">
+            <div key={s.name} className="card carousel-item">
               <h3 className="text-base font-bold text-white">{s.name}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-400">{s.body}</p>
             </div>

@@ -2,7 +2,7 @@ import { heroFeatures, site } from "@/lib/site";
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-28 pb-20 sm:pt-36">
+    <section id="top" className="relative overflow-hidden pb-14 pt-24 sm:pb-20 sm:pt-36">
       {/* decorative glow */}
       <div className="pointer-events-none absolute -right-40 top-0 h-[600px] w-[600px] rounded-full bg-violet-600/20 blur-[120px]" />
       <div className="pointer-events-none absolute -left-40 top-40 h-[400px] w-[400px] rounded-full bg-fuchsia-600/10 blur-[120px]" />
@@ -36,7 +36,7 @@ export function Hero() {
           Scale Faster. <span className="text-violet-400">Grow Smarter.</span>
         </p>
 
-        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-14 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
           {heroFeatures.map((f) => (
             <div
               key={f.title}

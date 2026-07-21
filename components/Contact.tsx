@@ -66,7 +66,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 sm:py-28">
+    <section id="contact" className="section-y">
       <div className="container-x">
         <SectionHeading
           label="Get In Touch"
@@ -75,7 +75,7 @@ export function Contact() {
           sub="Whether you're launching a project, raising funds, or scaling your brand — Meta Growth Labs is your growth partner every step of the way."
         />
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-5">
+        <div className="mt-6 sm:mt-12 grid gap-8 lg:grid-cols-5">
           {/* Contact details */}
           <div className="lg:col-span-2">
             <div className="space-y-3">
@@ -105,7 +105,7 @@ export function Contact() {
           </div>
 
           {/* Form */}
-          <form onSubmit={onSubmit} className="card lg:col-span-3">
+          <form id="contact-form" onSubmit={onSubmit} className="card lg:col-span-3">
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Name" name="name" required placeholder="Your name" />
               <Field label="Email" name="email" type="email" required placeholder="you@company.com" />

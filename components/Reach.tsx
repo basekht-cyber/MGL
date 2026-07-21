@@ -11,7 +11,7 @@ const benefits = [
 
 export function Reach() {
   return (
-    <section className="py-20 sm:py-28">
+    <section className="section-y">
       <div className="container-x">
         <SectionHeading
           label="Our Network Strength"
@@ -20,7 +20,7 @@ export function Reach() {
           sub="We leverage a massive network of KOLs, Telegram communities, and Web3 influencers to put your project in front of the right audience."
         />
 
-        <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-4">
+        <div className="mt-6 sm:mt-12 grid grid-cols-2 gap-5 sm:grid-cols-4">
           {reachStats.map((s) => (
             <div
               key={s.label}

@@ -30,7 +30,7 @@ export default function Home() {
       </main>
       <Footer />
       {/* clears the fixed mobile tab bar */}
-      <div aria-hidden="true" className="h-28 lg:hidden" />
+      <div aria-hidden="true" className="h-28 md:hidden" />
       <BottomNav />
     </>
   );

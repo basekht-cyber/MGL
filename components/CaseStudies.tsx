@@ -3,7 +3,7 @@ import { SectionHeading } from "./Section";
 
 export function CaseStudies() {
   return (
-    <section id="case-studies" className="py-20 sm:py-28">
+    <section id="case-studies" className="section-y">
       <div className="container-x">
         <SectionHeading
           label="Proven Strategies. Powerful Results."
@@ -12,20 +12,24 @@ export function CaseStudies() {
           sub="Real projects. Real strategies. Real results that speak."
         />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <div className="mt-6 grid gap-5 sm:mt-12 sm:gap-6 lg:grid-cols-2">
           {caseStudies.map((c) => (
             <article key={c.id} className="card flex flex-col">
-              <div className="flex flex-wrap items-start gap-x-4 gap-y-2">
-                <span className="rounded-lg bg-violet-500/10 px-2.5 py-1 text-sm font-bold text-violet-300 ring-1 ring-violet-500/20">
+              <div className="flex flex-wrap items-start gap-x-4 gap-y-3">
+                <span className="shrink-0 rounded-lg bg-violet-500/10 px-2.5 py-1 text-sm font-bold text-violet-300 ring-1 ring-violet-500/20">
                   {c.id}
                 </span>
                 <div className="min-w-0 flex-1">
                   <h3 className="text-lg font-bold text-white sm:text-xl">{c.name}</h3>
                   <p className="text-sm gradient-text">{c.type}</p>
                 </div>
-                <span className="rounded-full border border-violet-500/30 px-3 py-1 text-xs text-violet-200">
-                  {c.campaign}
-                </span>
+                {/* basis-full drops the badge onto its own line on narrow cards
+                    instead of letting it crush the project name beside it */}
+                <div className="basis-full sm:basis-auto">
+                  <span className="inline-block rounded-full border border-violet-500/30 px-3 py-1 text-xs text-violet-200">
+                    {c.campaign}
+                  </span>
+                </div>
               </div>
 
               <p className="mt-4 text-sm leading-relaxed text-slate-400">{c.body}</p>

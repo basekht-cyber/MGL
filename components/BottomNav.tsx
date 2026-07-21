@@ -222,7 +222,7 @@ export function BottomNav() {
   return (
     <nav
       aria-label="Section navigation"
-      className="fixed inset-x-0 bottom-0 z-50 lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-50 md:hidden"
       style={{ paddingBottom: "max(0.5rem, env(safe-area-inset-bottom))" }}
     >
       {/* fade so page content stays readable as it scrolls behind the bar */}

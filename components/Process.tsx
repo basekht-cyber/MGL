@@ -3,7 +3,7 @@ import { SectionHeading } from "./Section";
 
 export function Process() {
   return (
-    <section id="process" className="py-20 sm:py-28">
+    <section id="process" className="section-y">
       <div className="container-x">
         <SectionHeading
           label="Our Process"
@@ -12,9 +12,9 @@ export function Process() {
           sub="That turns data, creativity, and precision into measurable growth."
         />
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-6 carousel sm:mt-12 sm:grid-cols-2 xl:grid-cols-4">
           {processSteps.map((p) => (
-            <div key={p.step} className="card relative overflow-hidden">
+            <div key={p.step} className="card carousel-item relative overflow-hidden">
               <span className="absolute right-3 top-1 text-6xl font-black text-violet-500/10">
                 {p.step}
               </span>

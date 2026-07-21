@@ -34,6 +34,24 @@ body {
   }
 }
 
+/* The native select arrow renders as a black OS chevron that disappears into
+   the dark field. Swap it for a violet one drawn to match the form's icons. */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a78bfa' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 1.05rem;
+  padding-right: 2.75rem;
+}
+
+/* Chrome/Edge on Windows paint the popup list with OS colours otherwise */
+select option {
+  background-color: #0c0718;
+  color: #e2e8f0;
+}
+
 /* iOS Safari zooms the page when focusing a field under 16px */
 @media (max-width: 767px) {
   input,
@@ -66,8 +84,17 @@ body {
   }
 
   .card {
-    @apply rounded-2xl border border-violet-500/15 bg-panel/70 p-6 backdrop-blur-sm transition
-      duration-300 hover:border-violet-500/40 hover:shadow-glow;
+    @apply relative overflow-hidden rounded-2xl border border-violet-500/15 bg-panel/70 p-5
+      backdrop-blur-sm transition duration-300 hover:border-violet-500/40 hover:shadow-glow
+      sm:p-6;
+  }
+
+  /* A hairline of light along the top edge — reads as a lit bevel and stops
+     the cards looking like flat rectangles on a flat background. */
+  .card::before {
+    content: "";
+    @apply pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent
+      via-violet-400/40 to-transparent;
   }
 
   .btn-primary {
@@ -79,6 +106,25 @@ body {
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 rounded-xl border border-violet-500/30
       px-6 py-3 text-sm font-semibold text-violet-200 transition hover:bg-violet-500/10;
+  }
+
+  /* Vertical rhythm. Padding is doubled between any two sections, so the
+     mobile value has to stay small: py-8 reads as a 64px gap, not 32px. */
+  .section-y {
+    @apply py-8 sm:py-16 lg:py-24;
+  }
+
+  /* Card decks turn into an edge-to-edge swipeable carousel on phones and
+     fall back to a plain grid from `sm` up. Pure CSS — no JS, no hydration
+     cost, and it degrades gracefully if scripting is off. */
+  .carousel {
+    @apply no-scrollbar -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-1
+      sm:mx-0 sm:grid sm:snap-none sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0;
+  }
+
+  .carousel-item {
+    /* the sliver of the next card is the affordance that says "swipe me" */
+    @apply w-[80%] shrink-0 snap-center sm:w-auto;
   }
 
   /* horizontal strips that scroll without showing a scrollbar */
