@@ -81,6 +81,15 @@ body {
       px-6 py-3 text-sm font-semibold text-violet-200 transition hover:bg-violet-500/10;
   }
 
+  /* horizontal strips that scroll without showing a scrollbar */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   .section-label {
     @apply mb-3 inline-block text-xs font-semibold uppercase tracking-[0.18em] text-violet-300
       sm:tracking-[0.3em];

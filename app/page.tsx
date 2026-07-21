@@ -10,6 +10,7 @@ import { Fundraising } from "@/components/Fundraising";
 import { WhyUs } from "@/components/WhyUs";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { BottomNav } from "@/components/BottomNav";
 
 export default function Home() {
   return (
@@ -28,6 +29,9 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      {/* clears the fixed mobile tab bar */}
+      <div aria-hidden="true" className="h-28 lg:hidden" />
+      <BottomNav />
     </>
   );
 }
