@@ -8,3 +8,6 @@
 *.pem
 npm-debug.log*
 next-env.d.ts
+
+# deploy artifact
+/metagrowthlabs-hostinger.zip

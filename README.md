@@ -1,63 +1,80 @@
 # Meta Growth Labs — Website
 
-A SEO-friendly marketing website for **Meta Growth Labs** built with **Next.js 14 (App Router)**, **TypeScript**, and **Tailwind CSS**, featuring a working contact form that sends email via **Nodemailer**.
+A SEO-friendly marketing website for **Meta Growth Labs** built with **Next.js 14
+(App Router)**, **TypeScript**, and **Tailwind CSS**. It builds to a fully static
+site, so it can be hosted anywhere — including Hostinger shared hosting.
 
 ## Features
 
-- ⚡ Next.js 14 App Router + TypeScript
+- ⚡ Next.js 14 App Router + TypeScript, exported as static HTML/CSS/JS
 - 🎨 Dark, futuristic UI matching the brand deck (violet/purple gradients)
-- 🔍 SEO-ready: Open Graph, Twitter cards, JSON-LD `Organization` schema, `sitemap.xml`, `robots.txt`, semantic HTML
-- 📱 Fully responsive with mobile nav
-- ✉️ Contact form with a Nodemailer API route (`/api/contact`) — validation, honeypot anti-spam, and rate limiting
-- Sections: Hero, About, Services, Process, Industries, Case Studies, Network Reach, Fundraising, Why Us, Contact
+- 🔍 SEO-ready: Open Graph, Twitter cards, JSON-LD `Organization` schema,
+  `sitemap.xml`, `robots.txt`, semantic HTML
+- 📱 Mobile-first: swipeable card carousels and an app-style bottom tab bar
+  below `md`, classic navbar above it
+- ✉️ Contact form that opens Gmail (desktop) or the native mail app (mobile)
+  with the enquiry pre-filled
+- Sections: Hero, About, Services, Process, Industries, Case Studies,
+  Network Reach, Fundraising, Why Us, Contact
 
 ## Getting started
 
 ```bash
 npm install
-cp .env.example .env.local   # then fill in your SMTP credentials
-npm run dev                  # http://localhost:3000
+npm run dev     # http://localhost:3000
 ```
 
-## Email configuration
+## Contact form
 
-The contact form sends mail through SMTP. Copy `.env.example` to `.env.local` and set:
+There is no mail server and no API route. On submit the form builds a
+pre-filled message addressed to `info@metagrowthlabs.com` and opens it:
 
-| Variable       | Description                                                    |
-| -------------- | ------------------------------------------------------------- |
-| `SMTP_HOST`    | e.g. `smtp.gmail.com`                                          |
-| `SMTP_PORT`    | `465` (SSL) or `587` (TLS)                                     |
-| `SMTP_SECURE`  | `true` for port 465, `false` for 587                          |
-| `SMTP_USER`    | Sending mailbox, e.g. `info@metagrowthlabs.com`               |
-| `SMTP_PASS`    | SMTP password / **Gmail App Password**                        |
-| `CONTACT_TO`   | Where submissions are delivered                               |
+- **Desktop** → Gmail web compose in a new tab
+- **Mobile** → `mailto:`, which hands off to the Gmail / Mail app
 
-> **Gmail:** enable 2FA and create an App Password at
-> https://myaccount.google.com/apppasswords — use it as `SMTP_PASS`.
+A fallback panel with both links appears after submit, so a blocked popup or a
+missing mail app never leaves the user stuck. This is what keeps the site
+deployable to static hosting.
 
-If SMTP is not configured, the form returns a friendly "email us directly" message instead of crashing.
+> To send mail server-side instead, the site must move to a Node host
+> (Hostinger VPS, Vercel, Netlify) and regain an API route.
 
-## Build & deploy
+## Build
 
 ```bash
-npm run build
-npm start
+npm run build   # writes the static site to ./out
 ```
 
-Deploys cleanly to **Vercel** — add the `SMTP_*`, `CONTACT_TO`, and
-`NEXT_PUBLIC_SITE_URL` environment variables in the project settings.
+`output: "export"` in [`next.config.mjs`](next.config.mjs) means the build
+produces plain files — there is no `npm start` server to run.
+
+Set the canonical domain (affects `sitemap.xml`, `robots.txt`, and Open Graph
+URLs) via `.env.local`:
+
+```
+NEXT_PUBLIC_SITE_URL=https://metagrowthlabs.com
+```
+
+## Deploy
+
+See [DEPLOY.md](DEPLOY.md) for Hostinger upload steps and the re-zip command.
 
 ## Project structure
 
 ```
 app/
-  layout.tsx        # SEO metadata, fonts, JSON-LD
-  page.tsx          # section composition
-  sitemap.ts        # /sitemap.xml
-  robots.ts         # /robots.txt
-  api/contact/route.ts  # Nodemailer email endpoint
-components/         # UI sections
-lib/site.ts         # all site content (edit copy here)
+  layout.tsx     # SEO metadata, fonts, JSON-LD
+  page.tsx       # section composition
+  globals.css    # design tokens, .card / .carousel / .section-y utilities
+  icon.svg       # favicon
+  sitemap.ts     # /sitemap.xml
+  robots.ts      # /robots.txt
+components/      # UI sections + Navbar / BottomNav
+public/
+  logo.svg
+  .htaccess      # Apache config, copied into the build output
+lib/site.ts      # all site content
 ```
 
-Edit all text/stats in [`lib/site.ts`](lib/site.ts).
+Edit all copy, stats, links, and contact details in
+[`lib/site.ts`](lib/site.ts) — it is the single source for every section.

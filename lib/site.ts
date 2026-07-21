@@ -7,7 +7,7 @@ export const site = {
   slogan: "Scale Faster. Grow Smarter.",
   description:
     "Meta Growth Labs is a performance-driven marketing agency specializing in Performance Marketing, Web3 Growth, and Fundraising for innovative brands and blockchain projects.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.metagrowthlabs.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://metagrowthlabs.com",
   email: "info@metagrowthlabs.com",
   telegram: "@metagrowthlabs",
   telegramUrl: "https://t.me/metagrowthlabs",
@@ -17,7 +17,7 @@ export const site = {
   upwork:
     "https://www.upwork.com/freelancers/~01d9c4fc0462a472fe?companyReference=1871214459632681967",
   location: "Global / Remote",
-  website: "www.metagrowthlabs.com",
+  website: "metagrowthlabs.com",
 };
 
 // Social / hire-us profiles, used in the contact section and footer.
