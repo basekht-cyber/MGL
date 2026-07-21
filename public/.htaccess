@@ -28,22 +28,26 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 # ---- Caching --------------------------------------------------------------
-<IfModule mod_expires.c>
-  ExpiresActive On
+# These MUST live in mod_headers. Hostinger does not load mod_expires, so
+# anything nested in <IfModule mod_expires.c> is skipped silently — which left
+# every asset on the server default of "no-store, must-revalidate" and made
+# browsers re-download the whole ~1 MB bundle on every single visit.
+<IfModule mod_headers.c>
+  # Images and fonts served from public/ are not content-hashed, so keep the
+  # window short enough that replacing one actually propagates.
+  SetEnvIf Request_URI "\.(svg|png|jpe?g|webp|gif|ico|woff2?)$" MGL_CACHE_MED
+  Header always set Cache-Control "public, max-age=604800" env=MGL_CACHE_MED
 
-  # Next.js fingerprints these filenames, so they can be cached forever.
-  <FilesMatch "\.(js|css|woff2)$">
-    ExpiresDefault "access plus 1 year"
-    Header set Cache-Control "public, immutable"
-  </FilesMatch>
+  # Everything under /_next/static/ has a content hash in its filename, so a
+  # rebuild produces a new URL and these can never go stale. Declared after the
+  # rule above so it wins for hashed fonts.
+  SetEnvIf Request_URI "^/_next/static/" MGL_CACHE_LONG
+  Header always set Cache-Control "public, max-age=31536000, immutable" env=MGL_CACHE_LONG
 
-  ExpiresByType image/svg+xml "access plus 6 months"
-  ExpiresByType image/png "access plus 6 months"
-  ExpiresByType image/jpeg "access plus 6 months"
-  ExpiresByType image/webp "access plus 6 months"
-
-  # HTML must revalidate or visitors get stale pages after a redeploy.
-  ExpiresByType text/html "access plus 0 seconds"
+  # HTML revalidates on every visit, otherwise a redeploy never reaches anyone.
+  SetEnvIf Request_URI "\.html$" MGL_CACHE_HTML
+  SetEnvIf Request_URI "/$" MGL_CACHE_HTML
+  Header always set Cache-Control "public, max-age=0, must-revalidate" env=MGL_CACHE_HTML
 </IfModule>
 
 # ---- Security headers -----------------------------------------------------

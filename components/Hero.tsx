@@ -3,9 +3,12 @@ import { heroFeatures, site } from "@/lib/site";
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pb-14 pt-24 sm:pb-20 sm:pt-36">
-      {/* decorative glow */}
-      <div className="pointer-events-none absolute -right-40 top-0 h-[600px] w-[600px] rounded-full bg-violet-600/20 blur-[120px]" />
-      <div className="pointer-events-none absolute -left-40 top-40 h-[400px] w-[400px] rounded-full bg-fuchsia-600/10 blur-[120px]" />
+      {/* Decorative glow. Painted as radial gradients rather than blurred
+          circles: filter:blur() needs a full offscreen buffer plus a gaussian
+          pass every frame, while a gradient is effectively free and looks
+          identical at this softness. */}
+      <div className="pointer-events-none absolute -right-40 top-0 h-[600px] w-[600px] bg-[radial-gradient(circle,rgba(124,58,237,0.20),transparent_70%)]" />
+      <div className="pointer-events-none absolute -left-40 top-40 h-[400px] w-[400px] bg-[radial-gradient(circle,rgba(192,38,211,0.12),transparent_70%)]" />
 
       <div className="container-x relative">
         <p className="section-label animate-fade-up">
@@ -40,7 +43,7 @@ export function Hero() {
           {heroFeatures.map((f) => (
             <div
               key={f.title}
-              className="rounded-xl border border-violet-500/15 bg-panel/50 px-4 py-4 backdrop-blur-sm"
+              className="rounded-xl border border-violet-500/15 bg-panel/50 px-4 py-4"
             >
               <p className="text-sm font-bold text-violet-300">{f.title}</p>
               <p className="text-xs text-slate-400">{f.sub}</p>

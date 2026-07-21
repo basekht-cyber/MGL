@@ -33,7 +33,7 @@ export function Services() {
             (t) => (
               <li
                 key={t}
-                className="inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-panel/60 px-3.5 py-2 text-xs font-medium text-slate-300 backdrop-blur-sm transition hover:border-violet-500/40 hover:text-white sm:px-4 sm:text-sm"
+                className="inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-panel/60 px-3.5 py-2 text-xs font-medium text-slate-300 transition hover:border-violet-500/40 hover:text-white sm:px-4 sm:text-sm"
               >
                 <svg
                   width="14"

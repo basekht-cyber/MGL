@@ -83,10 +83,14 @@ select option {
     @apply bg-gradient-to-r from-violet-400 via-fuchsia-400 to-purple-500 bg-clip-text text-transparent;
   }
 
+  /* Deliberately no backdrop-blur here. There are ~45 cards on the page and
+     each one would force the compositor to snapshot and gaussian-blur its
+     backdrop. That backdrop is a smooth radial gradient, so blurring it is
+     visually a no-op — it was pure cost, and the main cause of scroll jank
+     on mid-range phones. */
   .card {
     @apply relative overflow-hidden rounded-2xl border border-violet-500/15 bg-panel/70 p-5
-      backdrop-blur-sm transition duration-300 hover:border-violet-500/40 hover:shadow-glow
-      sm:p-6;
+      transition duration-300 hover:border-violet-500/40 hover:shadow-glow sm:p-6;
   }
 
   /* A hairline of light along the top edge — reads as a lit bevel and stops
