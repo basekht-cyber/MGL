@@ -8,14 +8,25 @@ export const site = {
   description:
     "Meta Growth Labs is a performance-driven marketing agency specializing in Performance Marketing, Web3 Growth, and Fundraising for innovative brands and blockchain projects.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.metagrowthlabs.com",
-  email: "labsmetagrowth@gmail.com",
+  email: "info@metagrowthlabs.com",
   telegram: "@metagrowthlabs",
   telegramUrl: "https://t.me/metagrowthlabs",
-  linkedin: "https://linkedin.com/in/usamasaleem07",
-  linkedinName: "Usama Saleem",
+  linkedin: "https://www.linkedin.com/company/https-metagrowthlabs.com-/",
+  instagram: "https://www.instagram.com/metagrowthlabs",
+  fiverr: "https://www.fiverr.com/s/Q7e8yj3",
+  upwork:
+    "https://www.upwork.com/freelancers/~01d9c4fc0462a472fe?companyReference=1871214459632681967",
   location: "Global / Remote",
   website: "www.metagrowthlabs.com",
 };
+
+// Social / hire-us profiles, used in the contact section and footer.
+export const socials = [
+  { label: "LinkedIn", value: "Meta Growth Labs", href: site.linkedin },
+  { label: "Instagram", value: "@metagrowthlabs", href: site.instagram },
+  { label: "Fiverr", value: "Hire us on Fiverr", href: site.fiverr },
+  { label: "Upwork", value: "Hire us on Upwork", href: site.upwork },
+];
 
 export const nav = [
   { label: "About", href: "#about" },

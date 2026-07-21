@@ -1,5 +1,5 @@
 import { Logo } from "./Logo";
-import { nav, site } from "@/lib/site";
+import { nav, site, socials } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -39,9 +39,22 @@ export function Footer() {
             <a href={site.telegramUrl} target="_blank" rel="noopener noreferrer" className="block text-slate-400 hover:text-violet-300">
               {site.telegram}
             </a>
-            <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="block text-slate-400 hover:text-violet-300">
-              LinkedIn — {site.linkedinName}
-            </a>
+
+            <p className="mt-4 font-semibold text-white">Follow &amp; hire us</p>
+            <ul className="mt-2 space-y-1">
+              {socials.map((s) => (
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-400 transition hover:text-violet-300"
+                  >
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 

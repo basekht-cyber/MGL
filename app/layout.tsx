@@ -69,7 +69,13 @@ const jsonLd = {
   description: site.description,
   email: site.email,
   slogan: site.slogan,
-  sameAs: [site.linkedin, site.telegramUrl],
+  sameAs: [
+    site.linkedin,
+    site.instagram,
+    site.fiverr,
+    site.upwork,
+    site.telegramUrl,
+  ],
   areaServed: "Worldwide",
   knowsAbout: [
     "Performance Marketing",

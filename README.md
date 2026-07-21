@@ -28,7 +28,7 @@ The contact form sends mail through SMTP. Copy `.env.example` to `.env.local` an
 | `SMTP_HOST`    | e.g. `smtp.gmail.com`                                          |
 | `SMTP_PORT`    | `465` (SSL) or `587` (TLS)                                     |
 | `SMTP_SECURE`  | `true` for port 465, `false` for 587                          |
-| `SMTP_USER`    | Sending mailbox, e.g. `labsmetagrowth@gmail.com`              |
+| `SMTP_USER`    | Sending mailbox, e.g. `info@metagrowthlabs.com`               |
 | `SMTP_PASS`    | SMTP password / **Gmail App Password**                        |
 | `CONTACT_TO`   | Where submissions are delivered                               |
 

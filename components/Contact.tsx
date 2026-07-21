@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { site } from "@/lib/site";
+import { site, socials } from "@/lib/site";
 import { SectionHeading } from "./Section";
 
 const channels = [
   { label: "Email", value: site.email, href: `mailto:${site.email}` },
   { label: "Telegram", value: site.telegram, href: site.telegramUrl },
-  { label: "LinkedIn", value: site.linkedinName, href: site.linkedin },
+  ...socials,
   { label: "Website", value: site.website, href: `https://${site.website}` },
-  { label: "Location", value: site.location, href: undefined },
+  { label: "Location", value: site.location, href: undefined as string | undefined },
 ];
 
 export function Contact() {
